@@ -1,7 +1,7 @@
 # gsfw-rebirth-v1.0
 springboot框架基础包及Sample  
-java17
-springboot3
+java17  
+springboot3  
 
 集成内容包括：  
 1.双数据源  
