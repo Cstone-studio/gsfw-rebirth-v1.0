@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+server:
+  port: 8081
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
