@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class R {
+public class R<T> {
     /**
      * 响应代码
      */
@@ -29,7 +29,7 @@ public class R {
     /**
      * 响应结果
      */
-    private Object result;
+    private T result;
 
     public R() {
     }
@@ -51,11 +51,11 @@ public class R {
         this.message = message;
     }
 
-    public Object getResult() {
+    public T getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(T result) {
         this.result = result;
     }
 
@@ -73,7 +73,7 @@ public class R {
      * @param data
      * @return
      */
-    public static R success(Object data) {
+    public static <T> R success(T data) {
         R rb = new R();
         rb.setCode(CodeEnum.IS_SUCCESS.getCode());
         rb.setMessage("成功");

@@ -115,7 +115,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>6.4.2.Final</version>
 		</dependency>
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
