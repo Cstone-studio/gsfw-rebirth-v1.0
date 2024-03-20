@@ -6,13 +6,13 @@ springboot3
 集成内容包括：  
 1.双数据源  
 2.mysql连接  
-3.orcale连接  
-4.mybatis plus  
+3.postgresql连接     
+4.jpa集成  
 5.swaager  
 6.spring security  
 7.JWT  
 8.基于注解的验证规则示例  
-9.jpa集成  
+9.mybatis plus  
 
 # mybatis plus CRUD 接口
 https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3
