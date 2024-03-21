@@ -11,9 +11,8 @@ springboot3
 5.swaager baseUrl/swagger-ui/index.html#/  
 6.spring security  
 7.JWT  
-8.基于注解的验证规则示例  
-9.mybatis plus  集成
-10.增删改查demo  
+8.基于注解的验证规则示例
+9.增删改查demo  
 
 # mybatis plus CRUD 接口
 https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3
