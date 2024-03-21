@@ -11,7 +11,7 @@ server:
 application:
   security:
     jwt:
-      secret-key: green_stone_gsfwrebirth
+      secret-key: TtGNShc8FQrpRdANi4vl5ik5yTP6GVQXTtGNShc8FQrpRdANi4vl5ik5yTP6GVQX
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
