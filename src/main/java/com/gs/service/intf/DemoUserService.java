@@ -7,6 +7,25 @@ import com.gs.model.entity.jpa.db1.DemoUser;
 public interface DemoUserService {
 
     /**
+     * 创建用户
+     * @param DemoUserDTO dto 用户dto
+     * @return DemoUserDTO 创建成功后的dto
+     */
+    DemoUserDTO create(DemoUserDTO dto);
+
+//    /**
+//     * 更新用户
+//     * @param UserDTO dto 用户dto
+//     */
+//    void update(DemoUserDTO dto);
+//
+//    /**
+//     * 删除用户
+//     * @param Long id 用户id
+//     */
+//    void delete(Long id);
+
+    /**
      * 根据id查找用户
      * @param Long id 主键id
      * @return DemoUserDTO

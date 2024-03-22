@@ -40,6 +40,27 @@ public class DemoUserController extends BaseController {
     @Autowired
     private DemoUserConvert demoUserConvert;
 
+    @Operation(summary = "add demo user")
+    @PostMapping
+    public R add(@Validated @RequestBody DemoUserDTO userDTO) {
+        demoUserService.create(userDTO);
+        return R.success();
+    }
+
+//    @ApiOperation(value = "修改用户")
+//    @PutMapping
+//    public R update(@RequestBody UserDTO userDTO) {
+//        userService.update(userDTO);
+//        return R.success();
+//    }
+//
+//    @ApiOperation(value = "删除用户")
+//    @DeleteMapping
+//    public R del(@RequestParam("id") Long id) {
+//        userService.delete(id);
+//        return R.success();
+//    }
+
     @Operation(summary = "search demo user", description = "search demo user")
     @GetMapping("/detail")
     public R<DemoUser> detail(Long id) {

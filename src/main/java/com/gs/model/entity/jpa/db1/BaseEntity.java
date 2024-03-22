@@ -28,11 +28,11 @@ public class BaseEntity implements Serializable {
      */
     @Column(name = "create_user", length = 50)
     @CreatedBy
-    private String createUser;
+    private String createUser = "admin";
 
     @Column(name = "update_user", length = 50)
     @LastModifiedBy
-    private String  updateUser;
+    private String  updateUser = "admin";
     /**
      * 创建时间
      */

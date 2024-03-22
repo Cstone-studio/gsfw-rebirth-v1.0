@@ -11,4 +11,6 @@ public interface DemoUserConvert {
     DemoUserConvert INSTANCE = Mappers.getMapper( DemoUserConvert.class );
 
     DemoUserDTO toDto(DemoUser source);
+
+    DemoUser toEntity(DemoUserDTO source);
 }

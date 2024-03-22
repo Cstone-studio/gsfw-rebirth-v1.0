@@ -23,6 +23,12 @@ public class DemoUserServiceImpl implements DemoUserService {
     private DemoUserConvert demoUserConvert;
 
     @Override
+    public DemoUserDTO create(DemoUserDTO dto) {
+        DemoUser demoUser = demoUserRepository.save(demoUserConvert.toEntity(dto));
+        return demoUserConvert.toDto(demoUser);
+    }
+
+    @Override
     public DemoUserDTO findById(Long id) {
         return demoUserRepository.findById(id).map(demoUser -> demoUserConvert.toDto(demoUser)).orElse(null);
     }

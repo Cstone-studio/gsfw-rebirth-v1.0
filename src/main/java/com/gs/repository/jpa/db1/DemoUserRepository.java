@@ -10,4 +10,8 @@ public interface DemoUserRepository extends JpaRepository<DemoUser, Long>, JpaSp
     Optional<DemoUser> findByUserName(String userName);
 
     DemoUser findByUserNameAndPassword(String userName, String password);
+
+    DemoUser findByEmail(String email);
+
+    DemoUser findByMobile(String mobile);
 }
