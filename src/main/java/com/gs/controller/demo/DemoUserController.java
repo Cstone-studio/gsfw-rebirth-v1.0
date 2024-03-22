@@ -4,6 +4,7 @@ import com.gs.constant.enums.CodeEnum;
 import com.gs.convert.DemoUserConvert;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserLoginDTO;
+import com.gs.model.dto.demo.DemoUserPageDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import com.gs.service.impl.JwtService;
@@ -13,6 +14,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
@@ -65,6 +68,16 @@ public class DemoUserController extends BaseController {
     @GetMapping("/detail")
     public R<DemoUser> detail(Long id) {
         return R.success(demoUserService.findById(id));
+    }
+
+    @Operation(summary = "paging query demo user")
+    @GetMapping
+    public R list(DemoUserPageDTO params) {
+        return R.success(demoUserService.list(params, PageRequest.of(
+                params.getPage() - 1,
+                params.getRows(),
+                Sort.by("id").descending()))
+        );
     }
 
     @Operation(summary = "user login")

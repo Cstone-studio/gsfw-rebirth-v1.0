@@ -1,12 +1,19 @@
 package com.gs.service.impl;
 
 import com.gs.convert.DemoUserConvert;
+import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserLoginDTO;
+import com.gs.model.dto.demo.DemoUserPageDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
+import com.gs.repository.jpa.db1.spec.DemoUserSpecification;
 import com.gs.service.intf.DemoUserService;
+import com.gs.utils.GsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +27,9 @@ public class DemoUserServiceImpl implements DemoUserService {
 
     @Autowired
     private DemoUserRepository demoUserRepository;
+
+    @Autowired
+    private DemoUserSpecification<DemoUser> demoUserSpecification;
 
     @Autowired
     private DemoUserConvert demoUserConvert;
@@ -46,6 +56,17 @@ public class DemoUserServiceImpl implements DemoUserService {
             demoUserRepository.save(demoUser);
             // userRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public IPageModel<DemoUserDTO> list(DemoUserPageDTO param, Pageable pageable) {
+        Page<DemoUser> demoUserPage = demoUserRepository.findAll(
+                Specification.where(demoUserSpecification.mobileLike(param.getMobile()))
+                        .and(demoUserSpecification.userNameEqualsTo(param.getUserName())
+                        .and(demoUserSpecification.emailNotEqualsTo(param.getEmail()))), pageable
+        );
+
+        return GsUtils.pageConvert(demoUserPage.map(entity -> demoUserConvert.toDto(entity)));
     }
 
     @Override

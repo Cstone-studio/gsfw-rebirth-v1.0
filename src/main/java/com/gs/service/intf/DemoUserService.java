@@ -1,8 +1,11 @@
 package com.gs.service.intf;
 
+import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserLoginDTO;
+import com.gs.model.dto.demo.DemoUserPageDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
+import org.springframework.data.domain.Pageable;
 
 public interface DemoUserService {
 
@@ -24,6 +27,12 @@ public interface DemoUserService {
      * @param Long id 用户id
      */
     void delete(Long id);
+
+    /**
+     * 分页查询
+     * @param param DrugOrderSearchParam
+     */
+    IPageModel<DemoUserDTO> list(DemoUserPageDTO param, Pageable pageable);
 
     /**
      * 根据id查找用户
