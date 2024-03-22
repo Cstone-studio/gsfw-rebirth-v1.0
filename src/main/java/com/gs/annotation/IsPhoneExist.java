@@ -45,7 +45,7 @@ public @interface IsPhoneExist {
                 DemoUser mobileExist = demoUserRepository.findByMobile(value);
                 if (null == mobileExist) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
             }

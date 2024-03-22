@@ -54,12 +54,12 @@ public class DemoUserController extends BaseController {
         return R.success();
     }
 
-//    @ApiOperation(value = "删除用户")
-//    @DeleteMapping
-//    public R del(@RequestParam("id") Long id) {
-//        userService.delete(id);
-//        return R.success();
-//    }
+    @Operation(summary = "delete demo user")
+    @DeleteMapping
+    public R del(@RequestParam("id") Long id) {
+        demoUserService.delete(id);
+        return R.success();
+    }
 
     @Operation(summary = "search demo user", description = "search demo user")
     @GetMapping("/detail")

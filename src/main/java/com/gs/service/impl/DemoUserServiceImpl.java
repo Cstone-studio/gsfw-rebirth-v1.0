@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
+import java.util.Optional;
+
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, transactionManager = "transactionManager" , readOnly = true, rollbackFor = Exception.class)
 public class DemoUserServiceImpl implements DemoUserService {
@@ -32,8 +34,18 @@ public class DemoUserServiceImpl implements DemoUserService {
     public void update(DemoUserDTO dto) {
 
         DemoUser demoUser = demoUserConvert.toEntity(dto);
-
         demoUserRepository.save(demoUser);
+    }
+
+    @Override
+    public void delete(Long id) {
+        Optional<DemoUser> optionalNews = demoUserRepository.findById(id);
+        if(optionalNews.isPresent()){
+            DemoUser demoUser = optionalNews.get();
+            demoUser.setDeleted(true);
+            demoUserRepository.save(demoUser);
+            // userRepository.deleteById(id);
+        }
     }
 
     @Override

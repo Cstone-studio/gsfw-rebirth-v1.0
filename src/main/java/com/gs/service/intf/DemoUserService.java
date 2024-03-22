@@ -19,11 +19,11 @@ public interface DemoUserService {
      */
     void update(DemoUserDTO dto);
 
-//    /**
-//     * 删除用户
-//     * @param Long id 用户id
-//     */
-//    void delete(Long id);
+    /**
+     * 删除用户
+     * @param Long id 用户id
+     */
+    void delete(Long id);
 
     /**
      * 根据id查找用户
