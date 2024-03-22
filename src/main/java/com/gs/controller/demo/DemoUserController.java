@@ -25,6 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("api/demouser")
 @AllArgsConstructor
+@Validated
 public class DemoUserController extends BaseController {
 
     @Autowired
