@@ -13,12 +13,12 @@ public interface DemoUserService {
      */
     DemoUserDTO create(DemoUserDTO dto);
 
-//    /**
-//     * 更新用户
-//     * @param UserDTO dto 用户dto
-//     */
-//    void update(DemoUserDTO dto);
-//
+    /**
+     * 更新用户
+     * @param DemoUserDTO dto 用户dto
+     */
+    void update(DemoUserDTO dto);
+
 //    /**
 //     * 删除用户
 //     * @param Long id 用户id

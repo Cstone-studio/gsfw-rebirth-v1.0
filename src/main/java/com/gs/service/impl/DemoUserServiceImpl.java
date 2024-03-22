@@ -29,6 +29,14 @@ public class DemoUserServiceImpl implements DemoUserService {
     }
 
     @Override
+    public void update(DemoUserDTO dto) {
+
+        DemoUser demoUser = demoUserConvert.toEntity(dto);
+
+        demoUserRepository.save(demoUser);
+    }
+
+    @Override
     public DemoUserDTO findById(Long id) {
         return demoUserRepository.findById(id).map(demoUser -> demoUserConvert.toDto(demoUser)).orElse(null);
     }

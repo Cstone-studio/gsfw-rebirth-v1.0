@@ -47,13 +47,13 @@ public class DemoUserController extends BaseController {
         return R.success();
     }
 
-//    @ApiOperation(value = "修改用户")
-//    @PutMapping
-//    public R update(@RequestBody UserDTO userDTO) {
-//        userService.update(userDTO);
-//        return R.success();
-//    }
-//
+    @Operation(summary = "edit demo user")
+    @PutMapping
+    public R update(@Validated @RequestBody DemoUserDTO userDTO) {
+        demoUserService.update(userDTO);
+        return R.success();
+    }
+
 //    @ApiOperation(value = "删除用户")
 //    @DeleteMapping
 //    public R del(@RequestParam("id") Long id) {

@@ -15,7 +15,7 @@ import lombok.ToString;
 @PasswordEqual
 public class DemoUserDTO {
 
-//    private Long id;
+    private Long id;
 
     /**
      * 用户名
