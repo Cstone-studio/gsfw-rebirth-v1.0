@@ -21,6 +21,12 @@ public class PersistenceJPAConfig {
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String ddlAuto;
 
+    @Value("${spring.jpa.show-sql}")
+    private String showSql;
+
+    @Value("${spring.jpa.hibernate.format_sql}")
+    private String formatSql;
+
     @Autowired
     private DataSourceConfig dataSourceConfig;
 
@@ -76,7 +82,8 @@ public class PersistenceJPAConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", this.ddlAuto);
-//        properties.setProperty("hibernate.dialect", this.databasePlatform);
+        properties.setProperty("show-sql", this.showSql);
+        properties.setProperty("hibernate.format_sql", this.formatSql);
 
         return properties;
     }
