@@ -21,7 +21,7 @@ public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", length = 30)
-    private Long id;
+    private Integer id;
 
     /**
      * 创建人
