@@ -29,5 +29,5 @@ spring:
       #create: creates the schema, destroying previous data.
       #create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
       ddl-auto: none
-      format_sql: true
+      format_sql: false
     show-sql: true  #日志中显示sql语句
