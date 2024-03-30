@@ -44,19 +44,19 @@ public class PersistenceJPAConfig {
         return em;
     }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory2() {
-        LocalContainerEntityManagerFactoryBean em
-                = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSourceConfig.secondaryDataSource());
-        em.setPackagesToScan("com.gs.model.entity.jpa.db2");
-
-        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(additionalProperties());
-
-        return em;
-    }
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory2() {
+//        LocalContainerEntityManagerFactoryBean em
+//                = new LocalContainerEntityManagerFactoryBean();
+//        em.setDataSource(dataSourceConfig.secondaryDataSource());
+//        em.setPackagesToScan("com.gs.model.entity.jpa.db2");
+//
+//        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+//        em.setJpaVendorAdapter(vendorAdapter);
+//        em.setJpaProperties(additionalProperties());
+//
+//        return em;
+//    }
 
     @Bean
     public PlatformTransactionManager transactionManager() {
@@ -66,13 +66,13 @@ public class PersistenceJPAConfig {
         return transactionManager;
     }
 
-    @Bean
-    public PlatformTransactionManager transactionManager2() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory2().getObject());
-
-        return transactionManager;
-    }
+//    @Bean
+//    public PlatformTransactionManager transactionManager2() {
+//        JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(entityManagerFactory2().getObject());
+//
+//        return transactionManager;
+//    }
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){

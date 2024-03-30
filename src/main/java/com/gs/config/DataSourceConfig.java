@@ -18,11 +18,11 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "secondaryDataSource")
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource.db2")
-    public DataSource secondaryDataSource() {
-        return DataSourceBuilder.create().build();
-    }
+//    @Bean(name = "secondaryDataSource")
+//    @Primary
+//    @ConfigurationProperties(prefix = "spring.datasource.db2")
+//    public DataSource secondaryDataSource() {
+//        return DataSourceBuilder.create().build();
+//    }
 
 }

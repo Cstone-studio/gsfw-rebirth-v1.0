@@ -8,12 +8,12 @@ spring:
     jdbc-url: ${spring.datasource.db1.url}
     username: root
     password: 123456
-   db2: # 数据源2
-     # postgre数据源配置例
-     url: jdbc:postgresql://localhost:5432/gs
-     jdbc-url: ${spring.datasource.db2.url}
-     username: postgres
-     password: 123456
+#   db2: # 数据源2
+#     # postgre数据源配置例
+#     url: jdbc:postgresql://localhost:5432/gs
+#     jdbc-url: ${spring.datasource.db2.url}
+#     username: postgres
+#     password: 123456
   jpa:
     #设置数据库方言
     #for mysql org.hibernate.dialect.MySQL5Dialect
