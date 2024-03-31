@@ -1,7 +1,5 @@
 package com.gs.annotation;
 
-
-
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import jakarta.validation.Constraint;

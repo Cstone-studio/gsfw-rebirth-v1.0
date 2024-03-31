@@ -8,7 +8,7 @@ spring:
     jdbc-url: ${spring.datasource.db1.url}
     username: root
     password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
       # db2: # 数据源2
       # orcale数据源配置例
       # driver-class-name: oracle.jdbc.driver.OracleDriver

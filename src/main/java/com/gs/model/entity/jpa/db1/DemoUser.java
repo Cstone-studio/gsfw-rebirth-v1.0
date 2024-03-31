@@ -45,8 +45,8 @@ public class DemoUser extends BaseEntity implements UserDetails {
     @Column(name = "token")
     private String token;
 
-    @Enumerated(EnumType.STRING)
-    private RoleEnum role;
+//    @Enumerated(EnumType.STRING)
+//    private RoleEnum role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
