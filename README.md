@@ -24,7 +24,7 @@ admin
 123456  
 
 # swagger地址
-http://localhost:8081/swagger-ui.html
+http://localhost:8081/swagger-ui/index.html
 
 # 作者联系方式
 email：liuchengyao1989@126.com
