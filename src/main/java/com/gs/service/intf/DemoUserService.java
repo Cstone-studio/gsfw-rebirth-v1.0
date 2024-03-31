@@ -1,5 +1,6 @@
 package com.gs.service.intf;
 
+import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserLoginDTO;
@@ -20,7 +21,7 @@ public interface DemoUserService {
      * 更新用户
      * @param DemoUserDTO dto 用户dto
      */
-    void update(DemoUserDTO dto);
+    void update(DemoUserDTO dto) throws IncorrectParameterException;
 
     /**
      * 删除用户

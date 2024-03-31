@@ -1,5 +1,6 @@
 package com.gs.common;
 
+import com.gs.exception.IncorrectParameterException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -42,5 +43,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.toString());
+    }
+
+    @ExceptionHandler(IncorrectParameterException.class)
+    public ResponseEntity<String> handleIncorrectParameterException(IncorrectParameterException e) {
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
     }
 }

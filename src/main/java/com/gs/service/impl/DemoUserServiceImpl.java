@@ -1,6 +1,7 @@
 package com.gs.service.impl;
 
 import com.gs.convert.DemoUserConvert;
+import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserLoginDTO;
@@ -41,10 +42,30 @@ public class DemoUserServiceImpl implements DemoUserService {
     }
 
     @Override
-    public void update(DemoUserDTO dto) {
+    public void update(DemoUserDTO dto) throws IncorrectParameterException {
 
-        DemoUser demoUser = demoUserConvert.toEntity(dto);
-        demoUserRepository.save(demoUser);
+        if (dto.getId() == null) {
+            throw new IncorrectParameterException("id must not be null");
+        }
+
+        Optional<DemoUser> optional = demoUserRepository.findById(dto.getId());
+        if (optional.isPresent()) {
+            DemoUser demoUser = optional.get();
+
+            if (dto.getUserName() != null) {
+                demoUser.setUserName(dto.getUserName());
+            }
+            if (dto.getMobile() != null) {
+                demoUser.setMobile(dto.getMobile());
+            }
+            if (dto.getEmail() != null) {
+                demoUser.setEmail(dto.getEmail());
+            }
+
+            demoUserRepository.save(demoUser);
+        } else {
+            throw new IncorrectParameterException("update target User(id:" + String.valueOf(dto.getId()) + ") is not exist");
+        }
     }
 
     @Override

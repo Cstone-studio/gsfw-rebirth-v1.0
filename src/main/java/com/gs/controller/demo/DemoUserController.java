@@ -1,5 +1,6 @@
 package com.gs.controller.demo;
 
+import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.demo.DemoUserPageDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
@@ -33,7 +34,7 @@ public class DemoUserController extends BaseController {
 
     @Operation(summary = "edit demo user")
     @PutMapping
-    public R update(@Validated @RequestBody DemoUserDTO userDTO) {
+    public R update(@Validated @RequestBody DemoUserDTO userDTO) throws IncorrectParameterException {
         demoUserService.update(userDTO);
         return R.success();
     }
