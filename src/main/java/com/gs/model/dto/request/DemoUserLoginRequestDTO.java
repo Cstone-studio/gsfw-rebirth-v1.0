@@ -1,12 +1,12 @@
-package com.gs.model.dto.demo;
+package com.gs.model.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-@Schema(name = "DemoUserLoginDTO", description = "検索条件")
-public class DemoUserLoginDTO {
+@Schema(name = "DemoUserLoginRequestDTO", description = "検索条件")
+public class DemoUserLoginRequestDTO {
 
     @NotBlank(message = "账号不能为空")
     @Schema(name = "userName", description = "用户名", example = "")

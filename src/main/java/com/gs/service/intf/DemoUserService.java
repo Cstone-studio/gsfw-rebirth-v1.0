@@ -3,8 +3,8 @@ package com.gs.service.intf;
 import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
-import com.gs.model.dto.demo.DemoUserLoginDTO;
 import com.gs.model.dto.demo.DemoUserPageDTO;
+import com.gs.model.dto.request.DemoUserLoginRequestDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import org.springframework.data.domain.Pageable;
 
@@ -44,9 +44,9 @@ public interface DemoUserService {
 
     /**
      * 用户登录
-     * @param DemoUserLoginDTO demoUserLoginDTO 登录参数dto
+     * @param DemoUserLoginRequestDTO demoUserLoginRequestDTO 登录参数dto
      */
-    DemoUser login(DemoUserLoginDTO demoUserLoginDTO);
+    DemoUser login(DemoUserLoginRequestDTO demoUserLoginRequestDTO);
 
     /**
      * 登录成功后保存token,用来检验重复登录

@@ -3,7 +3,7 @@ package com.gs.controller;
 import com.gs.constant.enums.CodeEnum;
 import com.gs.convert.DemoUserConvert;
 import com.gs.model.dto.demo.DemoUserDTO;
-import com.gs.model.dto.demo.DemoUserLoginDTO;
+import com.gs.model.dto.request.DemoUserLoginRequestDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import com.gs.service.impl.JwtService;
@@ -45,9 +45,9 @@ public class LoginController {
 
     @Operation(summary = "user login")
     @PostMapping(value = "/login")
-    public R login(@Validated @RequestBody DemoUserLoginDTO demoUserLoginDTO) {
+    public R login(@Validated @RequestBody DemoUserLoginRequestDTO demoUserLoginRequestDTO) {
 
-        DemoUser demoUser = demoUserService.login(demoUserLoginDTO);
+        DemoUser demoUser = demoUserService.login(demoUserLoginRequestDTO);
 
         if (null == demoUser || demoUser.getDeleted()) {
             return R.error(CodeEnum.IS_FAIL.getCode(), "用户名或密码错误");

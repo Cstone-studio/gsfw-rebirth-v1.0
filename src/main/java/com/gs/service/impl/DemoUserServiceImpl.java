@@ -4,8 +4,8 @@ import com.gs.convert.DemoUserConvert;
 import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
-import com.gs.model.dto.demo.DemoUserLoginDTO;
 import com.gs.model.dto.demo.DemoUserPageDTO;
+import com.gs.model.dto.request.DemoUserLoginRequestDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import com.gs.repository.jpa.db1.spec.DemoUserSpecification;
@@ -96,8 +96,8 @@ public class DemoUserServiceImpl implements DemoUserService {
     }
 
     @Override
-    public DemoUser login(DemoUserLoginDTO demoUserLoginDTO) {
-        return demoUserRepository.findByUserNameAndPassword(demoUserLoginDTO.getUserName(), DigestUtils.md5DigestAsHex(demoUserLoginDTO.getPassword().getBytes()));
+    public DemoUser login(DemoUserLoginRequestDTO demoUserLoginRequestDTO) {
+        return demoUserRepository.findByUserNameAndPassword(demoUserLoginRequestDTO.getUserName(), DigestUtils.md5DigestAsHex(demoUserLoginRequestDTO.getPassword().getBytes()));
     }
 
     @Override
