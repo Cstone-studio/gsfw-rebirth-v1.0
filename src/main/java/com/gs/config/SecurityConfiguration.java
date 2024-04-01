@@ -38,6 +38,7 @@ public class SecurityConfiguration {
             "/swagger-ui/**",
             "/swagger-ui.html/**",
             "/webjars/**",
+            "/error", // Prevents all exceptions after integrating Spring Security from reporting 403
             "/api/login"
     };
 
