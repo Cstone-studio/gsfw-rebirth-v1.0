@@ -4,8 +4,11 @@ import com.gs.convert.DemoUserConvert;
 import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
-import com.gs.model.dto.demo.DemoUserPageDTO;
+import com.gs.model.dto.request.DemoUserAddRequestDTO;
 import com.gs.model.dto.request.DemoUserLoginRequestDTO;
+import com.gs.model.dto.request.DemoUserPageRequestDTO;
+import com.gs.model.dto.request.DemoUserUpdateRequestDTO;
+import com.gs.model.dto.response.DemoUserResponseDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import com.gs.repository.jpa.db1.spec.DemoUserSpecification;
@@ -36,35 +39,33 @@ public class DemoUserServiceImpl implements DemoUserService {
     private DemoUserConvert demoUserConvert;
 
     @Override
-    public DemoUserDTO create(DemoUserDTO dto) {
-        DemoUser demoUser = demoUserRepository.save(demoUserConvert.toEntity(dto));
+    public DemoUserResponseDTO create(DemoUserAddRequestDTO demoUserAddRequestDTO) {
+        DemoUser demoUser = demoUserRepository.save(demoUserConvert.toEntity(demoUserAddRequestDTO));
         return demoUserConvert.toDto(demoUser);
     }
 
     @Override
-    public void update(DemoUserDTO dto) throws IncorrectParameterException {
+    public void update(DemoUserUpdateRequestDTO demoUserUpdateRequestDTO) throws IncorrectParameterException {
 
-        if (dto.getId() == null) {
+        if (demoUserUpdateRequestDTO.getId() == null) {
             throw new IncorrectParameterException("id must not be null");
         }
 
-        Optional<DemoUser> optional = demoUserRepository.findById(dto.getId());
+        Optional<DemoUser> optional = demoUserRepository.findById(demoUserUpdateRequestDTO.getId());
         if (optional.isPresent()) {
             DemoUser demoUser = optional.get();
 
-            if (dto.getUserName() != null) {
-                demoUser.setUserName(dto.getUserName());
+            if (demoUserUpdateRequestDTO.getMobile() != null) {
+                demoUser.setMobile(demoUserUpdateRequestDTO.getMobile());
             }
-            if (dto.getMobile() != null) {
-                demoUser.setMobile(dto.getMobile());
-            }
-            if (dto.getEmail() != null) {
-                demoUser.setEmail(dto.getEmail());
+            if (demoUserUpdateRequestDTO.getEmail() != null) {
+                demoUser.setEmail(demoUserUpdateRequestDTO.getEmail());
             }
 
             demoUserRepository.save(demoUser);
         } else {
-            throw new IncorrectParameterException("update target User(id:" + String.valueOf(dto.getId()) + ") is not exist");
+            throw new IncorrectParameterException(
+                    "update target User(id:" + String.valueOf(demoUserUpdateRequestDTO.getId()) + ") is not exist");
         }
     }
 
@@ -80,7 +81,7 @@ public class DemoUserServiceImpl implements DemoUserService {
     }
 
     @Override
-    public IPageModel<DemoUserDTO> list(DemoUserPageDTO param, Pageable pageable) {
+    public IPageModel<DemoUserResponseDTO> list(DemoUserPageRequestDTO param, Pageable pageable) {
         Page<DemoUser> demoUserPage = demoUserRepository.findAll(
                 Specification.where(demoUserSpecification.mobileLike(param.getMobile()))
                         .and(demoUserSpecification.userNameEqualsTo(param.getUserName())
@@ -91,7 +92,7 @@ public class DemoUserServiceImpl implements DemoUserService {
     }
 
     @Override
-    public DemoUserDTO findById(Long id) {
+    public DemoUserResponseDTO findById(Long id) {
         return demoUserRepository.findById(id).map(demoUser -> demoUserConvert.toDto(demoUser)).orElse(null);
     }
 

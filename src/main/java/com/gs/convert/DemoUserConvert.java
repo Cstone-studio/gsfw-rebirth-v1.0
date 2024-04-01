@@ -1,6 +1,8 @@
 package com.gs.convert;
 
 import com.gs.model.dto.demo.DemoUserDTO;
+import com.gs.model.dto.request.DemoUserAddRequestDTO;
+import com.gs.model.dto.response.DemoUserResponseDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,7 +14,7 @@ public interface DemoUserConvert {
     DemoUserConvert INSTANCE = Mappers.getMapper( DemoUserConvert.class );
 
     @Mapping(target = "userName", source = "username")
-    DemoUserDTO toDto(DemoUser source);
+    DemoUserResponseDTO toDto(DemoUser source);
 
-    DemoUser toEntity(DemoUserDTO source);
+    DemoUser toEntity(DemoUserAddRequestDTO source);
 }

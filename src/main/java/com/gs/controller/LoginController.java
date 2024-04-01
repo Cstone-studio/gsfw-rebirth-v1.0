@@ -4,6 +4,7 @@ import com.gs.constant.enums.CodeEnum;
 import com.gs.convert.DemoUserConvert;
 import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.request.DemoUserLoginRequestDTO;
+import com.gs.model.dto.response.DemoUserResponseDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import com.gs.repository.jpa.db1.DemoUserRepository;
 import com.gs.service.impl.JwtService;
@@ -70,7 +71,7 @@ public class LoginController {
     @PostMapping(value = "/getUserInfo")
     public R getUserInfo() {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        DemoUserDTO demoUserDTO = demoUserRepository.findByUserName(userDetails.getUsername()).map(demoUser -> demoUserConvert.toDto(demoUser)).orElse(null);
+        DemoUserResponseDTO demoUserDTO = demoUserRepository.findByUserName(userDetails.getUsername()).map(demoUser -> demoUserConvert.toDto(demoUser)).orElse(null);
         if (null == demoUserDTO) {
             return R.error(CodeEnum.IS_FAIL.getCode(), "账号不存在");
         }

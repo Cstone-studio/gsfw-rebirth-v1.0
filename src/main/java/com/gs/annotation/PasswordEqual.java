@@ -1,6 +1,7 @@
 package com.gs.annotation;
 
 import com.gs.model.dto.demo.DemoUserDTO;
+import com.gs.model.dto.request.DemoUserAddRequestDTO;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -26,10 +27,10 @@ public @interface PasswordEqual {
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
-    class PasswordUserValidator implements ConstraintValidator<PasswordEqual, DemoUserDTO> {
+    class PasswordUserValidator implements ConstraintValidator<PasswordEqual, DemoUserAddRequestDTO> {
 
         @Override
-        public boolean isValid(DemoUserDTO changePasswordDto, ConstraintValidatorContext constraintValidatorContext) {
+        public boolean isValid(DemoUserAddRequestDTO changePasswordDto, ConstraintValidatorContext constraintValidatorContext) {
             String newPassword = changePasswordDto.getPassword();
             String confirmPassword = changePasswordDto.getConfirmPassword();
             return newPassword.equals(confirmPassword);

@@ -3,8 +3,11 @@ package com.gs.service.intf;
 import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
 import com.gs.model.dto.demo.DemoUserDTO;
-import com.gs.model.dto.demo.DemoUserPageDTO;
+import com.gs.model.dto.request.DemoUserAddRequestDTO;
 import com.gs.model.dto.request.DemoUserLoginRequestDTO;
+import com.gs.model.dto.request.DemoUserPageRequestDTO;
+import com.gs.model.dto.request.DemoUserUpdateRequestDTO;
+import com.gs.model.dto.response.DemoUserResponseDTO;
 import com.gs.model.entity.jpa.db1.DemoUser;
 import org.springframework.data.domain.Pageable;
 
@@ -12,16 +15,13 @@ public interface DemoUserService {
 
     /**
      * 创建用户
-     * @param DemoUserDTO dto 用户dto
-     * @return DemoUserDTO 创建成功后的dto
      */
-    DemoUserDTO create(DemoUserDTO dto);
+    DemoUserResponseDTO create(DemoUserAddRequestDTO demoUserAddRequestDTO);
 
     /**
      * 更新用户
-     * @param DemoUserDTO dto 用户dto
      */
-    void update(DemoUserDTO dto) throws IncorrectParameterException;
+    void update(DemoUserUpdateRequestDTO demoUserUpdateRequestDTO) throws IncorrectParameterException;
 
     /**
      * 删除用户
@@ -31,16 +31,15 @@ public interface DemoUserService {
 
     /**
      * 分页查询
-     * @param param DrugOrderSearchParam
      */
-    IPageModel<DemoUserDTO> list(DemoUserPageDTO param, Pageable pageable);
+    IPageModel<DemoUserResponseDTO> list(DemoUserPageRequestDTO param, Pageable pageable);
 
     /**
      * 根据id查找用户
      * @param Long id 主键id
      * @return DemoUserDTO
      */
-    DemoUserDTO findById(Long id);
+    DemoUserResponseDTO findById(Long id);
 
     /**
      * 用户登录
