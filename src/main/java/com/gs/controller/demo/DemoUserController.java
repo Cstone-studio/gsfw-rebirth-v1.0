@@ -51,7 +51,7 @@ public class DemoUserController extends BaseController {
 
     @Operation(summary = "search demo user", description = "search demo user")
     @GetMapping("/detail")
-    public R<DemoUserResponseDTO> detail(Long id) {
+    public R<DemoUserResponseDTO> detail(@RequestParam("id") Long id) {
         return R.success(demoUserService.findById(id));
     }
 
