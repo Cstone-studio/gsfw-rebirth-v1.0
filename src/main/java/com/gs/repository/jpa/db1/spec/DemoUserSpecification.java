@@ -31,6 +31,10 @@ public class DemoUserSpecification<T> {
         return (root, query, builder) -> StringUtils.isEmpty(userName) ? builder.conjunction() : builder.equal(root.get("userName"), userName);
     }
 
+    public Specification<T> userNameLike(String userName) {
+        return (root, query, builder) -> StringUtils.isEmpty(userName) ? builder.conjunction() : builder.like(root.get("userName"), "%" + userName + "%");
+    }
+
     public Specification<T> emailNotEqualsTo(String email) {
         return (root, query, builder) -> StringUtils.isEmpty(email) ? builder.conjunction() : builder.notEqual(root.get("email"), email);
     }

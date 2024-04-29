@@ -3,7 +3,6 @@ package com.gs.service.impl;
 import com.gs.convert.DemoUserConvert;
 import com.gs.exception.IncorrectParameterException;
 import com.gs.model.dto.base.IPageModel;
-import com.gs.model.dto.demo.DemoUserDTO;
 import com.gs.model.dto.request.DemoUserAddRequestDTO;
 import com.gs.model.dto.request.DemoUserLoginRequestDTO;
 import com.gs.model.dto.request.DemoUserPageRequestDTO;
@@ -40,6 +39,7 @@ public class DemoUserServiceImpl implements DemoUserService {
 
     @Override
     public DemoUserResponseDTO create(DemoUserAddRequestDTO demoUserAddRequestDTO) {
+        demoUserAddRequestDTO.setPassword(DigestUtils.md5DigestAsHex(demoUserAddRequestDTO.getPassword().getBytes()));
         DemoUser demoUser = demoUserRepository.save(demoUserConvert.toEntity(demoUserAddRequestDTO));
         return demoUserConvert.toDto(demoUser);
     }
@@ -84,8 +84,8 @@ public class DemoUserServiceImpl implements DemoUserService {
     public IPageModel<DemoUserResponseDTO> list(DemoUserPageRequestDTO param, Pageable pageable) {
         Page<DemoUser> demoUserPage = demoUserRepository.findAll(
                 Specification.where(demoUserSpecification.mobileLike(param.getMobile()))
-                        .and(demoUserSpecification.userNameEqualsTo(param.getUserName())
-                        .and(demoUserSpecification.emailNotEqualsTo(param.getEmail()))), pageable
+                        .and(demoUserSpecification.userNameLike(param.getUserName()))
+                , pageable
         );
 
         return GsUtils.pageConvert(demoUserPage.map(entity -> demoUserConvert.toDto(entity)));
