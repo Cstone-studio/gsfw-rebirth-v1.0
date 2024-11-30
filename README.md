@@ -1,6 +1,6 @@
 # gsfw-rebirth-v1.0
 
-本库已停止更新，最新版地址：[Cstone-studio/gsfw-rebirth-v1.0](https://github.com/gs-prod/gs-springboot-base-v1.0)
+本库已停止更新，最新版地址：[gs-springboot-base-v1.0](https://github.com/gs-prod/gs-springboot-base-v1.0)
 
 springboot框架基础包及Sample  
 java17  
